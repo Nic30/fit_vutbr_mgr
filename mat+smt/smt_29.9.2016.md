@@ -1,19 +1,4 @@
-# Logika
-
-* dukaz = pomoci modus ponens odvodim ze zadanych axiomu formuli, kterou chci dokazat
-
-* kazdy axiom je tautologie, dve tautologie modus ponens = tautologie => kazda tautologike, kdyz je dokazatelna
-
-* nazvy v implikaci:  antecedent -> konsekvent
-
-* je dokazatelna se znaci |-
-
-* dukazy sporem
-
-* pri dukazech T |- A , U |- A->B, TuU |-B
-
-* veta o dedukci na sjednoduseni dukazu 
-
+#priklady SMT 29.9.2016
 
 ##prevod na nand
 
@@ -81,7 +66,7 @@ z leve strany plyne b1, chceme dokazat ze     <br />
 `(c->(b and a)) -> ((~a and ~b) -> ~c)`  <br />                        
 vybereme si vhodne konjunkty
 
-nevime co dal, ale otocime implikaci
+nevime co dal, ale otocime implikaci  <br />
 `~((~a and ~b) -> ~c) -> ~(c -> (b and a))`       
 
 prepiseme na konjunkci, na zavorky zvlast                  <br /> 
@@ -147,54 +132,7 @@ c->(b and a) |- (~a and ~b) -> ~c
 
 
 
-
-###axiomy MP
-```
-A1  a->(b->a)
-A2  (a->(b->c)) -> ((a->b)->(a->c))  
-A3  otoceni implikace (~b->~a) -> (a->b)
-```
-axiom dava tvar formule, o kterych se vi, ze jsou dokazatelne
-
-axiom je vzdy potreba pouzit na cely vyraz
-
-
-pokud plati  <br />
-|- a         <br /> 
-|- a->b
-
-mp. |-b
-
-```
-a   a->b 
-\   /
-  O
-  |
-  B
-```  
-
-```
-axiomy, predpoklady
-|     /
-|    /
-O   / 
-\  /
-  O mp
-  |                               
-dokazovana formule
-```
-
-pokud vetve obsahuji stejnou formuli staci prirozene dokazat jen jednou
-
-###veta o dedukci
-(a pridam do predpokladu) <br />
-`p |- a->b  <=>  p,a |- b`
-
-
-
-##priklady SMT 29.9.2016
-
-###priklad 1
+##priklad 1
 a je dokazatelna                          <br />
 chceme dokazat ze (a or b) je dokazatelna <br />
 
@@ -204,18 +142,19 @@ mp, `~b->a`   (log upravy)<br />
     `b or a`
 
 
-###priklad 2 na otoceni imilikace
+##priklad 2 na otoceni imilikace
 
 `|-(x->y)`
 
 subst b->~x, a->~y
 
-// vim ze je platna formule protoze jsem pouzil formuli A3
-|- (x->y) -> (~y -> ~x)
-// log. upravim
-|- (~y->~x)
+vim, ze je platna formule, protoze jsem pouzil formuli A3 <br />
+`|- (x->y) -> (~y -> ~x)`
 
-###prikald 3
+log. upravim <br />
+`|- (~y->~x)`
+
+##prikald 3
 ```
 |-a
 |-b
@@ -237,7 +176,7 @@ prepis        <br />
 
 
 
-###priklad 4
+##priklad 4
 ```
 |- a->v
 |-b->c
@@ -266,7 +205,7 @@ otocim implikaci
 `|- (a or b) -> c`
 
 
-###Priklad z sparnych predpokladu jde dokazat coliki
+##Priklad z sparnych predpokladu jde dokazat coliki
 predpoklady(sporne):
 ```
 |-a
