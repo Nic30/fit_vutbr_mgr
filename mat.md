@@ -17,99 +17,109 @@
 
 ##prevod na nand
 
-(a and b) -> c
+`(a and b) -> c`
 
-* a->b = ~(a and ~b)
+* `a->b = ~(a and ~b)`
 
-* ~((a nand b) nand true) and ~c
+* `~((a nand b) nand true) and ~c`
 
-* ((a nand b) nand true) or ~c
+* `((a nand b) nand true) or ~c`
 
-* ((a nand b) nand true) nand (c nand true)
+* `((a nand b) nand true) nand (c nand true)`
 
 
 ##half adder
-
+zadan jako:
+```
 (s <-> (a xor b)) and (c <-> (a and b))
+```
 
-checme dokazat (s <-> (a xor b)) and (c <-> (a and b)) == 
-(~a and ~ b -> ~c) and //b1
-(~a and ~ b -> ~c) and //b2
-   
-(~a and   b ->  s) and //b3
-(~a and   b -> ~c) and //b4
+checme dokazat 
+(sestaveno podle pravdipodobnostni tabulky, znamena ze funkce zadaneho vyrazu funguje jako half adder) 
+(b1..b8 jsou jen nase pojmenovani)
+```
+(s <-> (a xor b)) and (c <-> (a and b)) == 
+(~a and ~ b -> ~c) and //b1              
+(~a and ~ b -> ~c) and //b2              
+                                         
+(~a and   b ->  s) and //b3              
+(~a and   b -> ~c) and //b4              
+                                         
+( a and  ~b ->  s) and //b5              
+( a and  ~b -> ~c) and //b6              
+                                         
+( a and   b -> ~s) and //b7              
+( a and   b -> ~c)     //b8 
+```                                                 
 
-( a and  ~b ->  s) and //b5
-( a and  ~b -> ~c) and //b6
-
-( a and   b -> ~s) and //b7
-( a and   b -> ~c)     //b8
                                                  
-
-                                                 
-// prepisu z vrchu
-((a and b) -> c)     //a1
-and (c-> (a and b))  //a2
-and ((a and ~b)->s)  //a3
-and ((~a and b)->s)  //a4
+prepisu z vrchu (a1..a5 jsou jen nase pojmenovani)
+```
+((a and b) -> c)     //a1               
+and (c-> (a and b))  //a2               
+and ((a and ~b)->s)  //a3               
+and ((~a and b)->s)  //a4               
 and (s-> ((a and ~b) or (~a and b))) //a5
+```
 
-// rozdelim na dve casti, ->, <-
+rozdelim na dve casti, ->, <-
 
-jako x1 and x2 and x3 -> z
-x2 -> z
+jako x1 and x2 and x3 -> z                          <br />
+x2 -> z                                             <br />
 nemusim uvazovat nektere casti a muzu dukaz rozdelit
 
-x -> z1 and z2 ...
-si muzu rozlozit na
-x-> z1
-x-> z2 ...
+x -> z1 and z2 ...  <br />
+si muzu rozlozit na <br />
+x-> z1              <br />
+x-> z2 ...          
 
 
-a4 -> b4, b6, b8  // trivialni dukazy
+trivialni dukazy     <br />
+`a4 -> b4, b6, b8`
 
-// z leve strany plyne b1
-//chceme dokazat ze 
-(c->(b and a)) -> ((~a and ~b) -> ~c)                         
-// vybereme si vhodne konjunkty
+z leve strany plyne b1, chceme dokazat ze     <br />
+`(c->(b and a)) -> ((~a and ~b) -> ~c)`  <br />                        
+vybereme si vhodne konjunkty
 
-// nevime co dal, ale otocime implikaci
-~((~a and ~b) -> ~c) -> ~(c -> (b and a))       
+nevime co dal, ale otocime implikaci
+`~((~a and ~b) -> ~c) -> ~(c -> (b and a))`       
 
-// prepiseme na konjunkci, na zavorky zvlast
-~(~((~a and ~b) and c)) -> ~(~(c and ~(b and a)))                                                 
-// odstranim dvojite negace
-~a and ~b and c -> c and ~(b and a)
+prepiseme na konjunkci, na zavorky zvlast                  <br /> 
+`~(~((~a and ~b) and c)) -> ~(~(c and ~(b and a)))`                                                 
 
-// zjistil jsem ze otoceni implikace nikam nevedlo protoze jsem se dostal dal jeste na horsi formule
+odstranim dvojite negace                   <br />
+`~a and ~b and c -> c and ~(b and a)`
 
-//pouziju vetu o dedukci
+zjistil jsem ze otoceni implikace nikam nevedlo protoze jsem se dostal dal jeste na horsi formule
 
-(c->(b and a)) |- ((~a and ~b)-> ~c)
-c-> (b and a) |- ~(a or b) ->~c
+pouziju vetu o dedukci
 
-// otoceni negace pro odstraneni negaci
-c -> (b and a) |- c->(a or b)
+`(c->(b and a)) |- ((~a and ~b)-> ~c)` <br />
+`c-> (b and a) |- ~(a or b) ->~c`
 
-|- (c-> (b and a)) -> (c-> (a or b))
-// zjednoduseni podle a1 neni mozne, pouzili by jsme neplatnou formuli
-// diky a2 budu dokazovat
-|- c->((a and a) -> (a or b))
-// diky a1 
-|- (b and a ) -> (a or b)
-	// (pokud se nam podari dokazat (b and a ) -> (a or b))  alias x
-	// |- x -> (c -> x) , c-> (b and a) -> (a or b)
+otoceni negace pro odstraneni negaci  <br />
+`c -> (b and a) |- c->(a or b)`
 
-// pokud se nam podari dokazat ze plati a i b, (b and a ) -> a
-|- ~(b -> ~a) ->~a
-// a3 otocim implikaci
+`|- (c-> (b and a)) -> (c-> (a or b))`                            <br />
+zjednoduseni podle a1 neni mozne, pouzili by jsme neplatnou formuli    <br />
+diky a2 budu dokazovat                                                 <br />
+`|- c->((a and a) -> (a or b))`
 
-|- ~a -> (b -> ~a)
-// tim jsem dostal a1 a vim ze je to dokazane
+diky a1                                                                 <br />
+`|- (b and a ) -> (a or b)`                                          <br />
+	(pokud se nam podari dokazat `(b and a ) -> (a or b))`  alias x  <br />
+	 |- x -> (c -> x) , c-> (b and a) -> (a or b)
+
+pokud se nam podari dokazat ze plati a i b, (b and a ) -> a             <br />
+a3 otocim implikaci                                                     <br />
+`|- ~(b -> ~a) ->~a`
+
+tim jsem dostal a1 a vim ze je to dokazane  <br />
+`|- ~a -> (b -> ~a)`
 
 
-// ted reverzne prepisu postup
-
+ted reverzne prepisu postup
+```
 a1 : |- ~a ->(b ->~a)
 a3 : |- (~a ->(b ->~a)) -> (~(b -> ~a) -> a)
 mp : |- ~(b -> ~a) -> a
@@ -133,34 +143,37 @@ c->(b and a) |- (~a and ~b) -> ~c
 
 
 |- (c->(b and a)) -> ((~a and ~b) -> ~c)
-
+```
 
 
 
 
 ###axiomy MP
+```
 A1  a->(b->a)
 A2  (a->(b->c)) -> ((a->b)->(a->c))  
 A3  otoceni implikace (~b->~a) -> (a->b)
+```
+axiom dava tvar formule, o kterych se vi, ze jsou dokazatelne
 
-axiom dava tvar formule o kterych se vi ze jsou dokazatelne
 axiom je vzdy potreba pouzit na cely vyraz
 
 
-pokud plati 
-|- a
+pokud plati  <br />
+|- a         <br /> 
 |- a->b
 
 mp. |-b
 
-
-a   a->b
+```
+a   a->b 
 \   /
   O
   |
   B
-  
+```  
 
+```
 axiomy, predpoklady
 |     /
 |    /
@@ -169,29 +182,31 @@ O   /
   O mp
   |                               
 dokazovana formule
+```
 
-pokud vetve obsahuji stejnou formuli staci dokazat jednou
+pokud vetve obsahuji stejnou formuli staci prirozene dokazat jen jednou
 
 ###veta o dedukci
-p |- a->b  <=>  p,a |- b //(a pridam do predpokladu)
+(a pridam do predpokladu) <br />
+`p |- a->b  <=>  p,a |- b`
 
 
 
-##priklady
+##priklady SMT 29.9.2016
 
-###1
-a je dokazatelna
-chceme dokazat ze (a or b) je dokazatelna
+###priklad 1
+a je dokazatelna                          <br />
+chceme dokazat ze (a or b) je dokazatelna <br />
 
-A1, a->(~b->a)  (subst a-> a, b-> ~b)
+A1, `a->(~b->a)`  (subst a-> a, b-> ~b)
 
-mp, ~b->a   (log upravy)
-    b or a
+mp, `~b->a`   (log upravy)<br />
+    `b or a`
 
 
-###priklad na otoceni imilikace
+###priklad 2 na otoceni imilikace
 
-|-(x->y)
+`|-(x->y)`
 
 subst b->~x, a->~y
 
@@ -201,61 +216,73 @@ subst b->~x, a->~y
 |- (~y->~x)
 
 ###prikald 3
+```
 |-a
 |-b
+```
 
-dokazuju a and b
+dokazuju `a and b`
 
-// ze skript str8 pr. e drive dokazana formula, po substituci b-> ~b
-a-> (b->~(a->~b)) 
-//mp na a
+ze skript str8 pr. e drive dokazana formula, po substituci `b-> ~b` <br />
+`a-> (b->~(a->~b))` 
 
-|- b -> ~(a->~b)
-// mp na b
-|- ~(a->~b)
-// prepis
-|- (a and b)
+mp na a      <br />
+`|- b -> ~(a->~b)`
+
+mp na b       <br />
+`|- ~(a->~b)`
+
+prepis        <br />
+`|- (a and b)`
 
 
 
 ###priklad 4
+```
 |- a->v
 |-b->c
+```
 
-chci dokazat (a or b) -> c
+chci dokazat `(a or b) -> c`
 
-//pouziju a3
-~c->~a 
+pouziju a3 <br />
+`~c->~a` 
 
-// veta o dedukci, leva cast se prevadi na predpoklad
-~c |- ~a
+veta o dedukci, leva cast se prevadi na predpoklad <br />
+`~c |- ~a`
 
-|- ~c->~b
-// veta o redukci
-~c|- ~b
+`|- ~c->~b`
 
-// pouziju ze a and b je dokazatelne
-~c |- ~a and ~b
+veta o redukci <br />
+`~c|- ~b`
 
-|-~c->(~a and ~b) // veta o dedukci
-// otocim implikaci
-|-~(~b and ~b) -> c
-|- (a or b) -> c
+pouziju ze a and b je dokazatelne <br />
+`~c |- ~a and ~b`
+
+`|-~c->(~a and ~b)` veta o dedukci
+ 
+otocim implikaci
+`|-~(~b and ~b) -> c` <br />
+`|- (a or b) -> c`
 
 
 ###Priklad z sparnych predpokladu jde dokazat coliki
 predpoklady(sporne):
+```
 |-a
 |-~a
+```
 
-a1: |- ~a -> (~b->~a)
-// zadano ~a je platne
+`a1: |- ~a -> (~b->~a)` (zadano ~a je platne)
 
-mp: |-(~b->~a)
-a3: |-(~b->~a)->(a->b)
-mp: a -> b 
-// predpoklad ~a
-|-b // ze spornych predpokladu jsem dokazal b ktere ale vubec platit nemusi
+`mp: |-(~b->~a)`
+
+`a3: |-(~b->~a)->(a->b)`
+
+`mp: a -> b`
+ 
+predpoklad `~a` <br />
+`|-b`  ze spornych predpokladu jsem dokazal b, ktere ale vubec platit nemusi
 
 
 
