@@ -1,14 +1,15 @@
-* monoid
-* komutativni monoid
+* monoid = grupoid kde operace splnuje asociativu a ma neutralni prvek
+* komutativni monoid = monoid + operace musi byt asociativni
 * plookruh
 
 * => prima derivace, derivure retezec po aplikaci jednoho pravidla
+
 > * obdobne prima redukce
 
 * tranzitivni uzaver =+=> (+ nad)
  > * 1 az N aplikaci prime derivace na dane slovo
 
-*reflexivni uzaver =*=>
+* reflexivni uzaver =*=> , binarni relace
 
 * vetna forma = platny retezec
 
