@@ -59,4 +59,5 @@ pokud vetve obsahuji stejnou formuli staci prirozene dokazat jen jednou
 (a pridam do predpokladu) <br />
 `p |- a->b  <=>  p,a |- b`
 
+### veta o uplnosti [TODO]
 
