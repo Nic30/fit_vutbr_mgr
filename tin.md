@@ -1,3 +1,6 @@
+#ukoly
+1. https://docs.google.com/spreadsheets/d/1MdpjP15YezR6mHWa9Vri6705jyWVOjDvU_iqtTey_kA/edit#gid=837647397
+
 # 1. prednaska 20.9.2016
 * monoid = grupoid kde operace splnuje asociativu a ma neutralni prvek
 * komutativni monoid = monoid + operace musi byt asociativni
@@ -152,3 +155,14 @@ do neveho stavu prejdu prectenim symbolu nebo bez precteni
 
 * rormalni formy
     * cnf
+
+# 5. prednaska 18.10.2016
+[prednaska](https://wis.fit.vutbr.cz/FIT/st/course-files-st.php?file=%2Fcourse%2FTIN-IT%2Flectures%2Fprednasky%2Ftin-pr05-bj2.pdf&cid=11660)    
+## zasobnikove automaty
+pechodova fn. `&Delta;(g,a,z) = {(q1,q1), ...(q2,q3)}`
+* nedeterministicke mamji vetsi silu a tak je nejde vzdy prevest na deterministicke
+## pumping lema pro bj
+
+* umet dukaz uzavrenosti L_2 vuci ruznym jazykovym operacim
+* bezkontextove jazyky jsou uzavreny jen ke sjednoceni
+
