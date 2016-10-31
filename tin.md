@@ -57,6 +57,12 @@ k-nerozlisitelnost ... prave kdyz neexistuje |w| <= k, ktery rozlisuje q1 a q2
 
 stavy q1, q2 jsou nerozlisitelne pokud jsou pro kazde k >=0 k nerozlisitelne
 
+## 6. - 25.10.2016
+* umet i od strany 23
+
+* znat matematicke zapisy prechodovych fn.
+
+
 
 uplne definonovay DKA redukovany jestlize zadny stav z Q neni nedostupny a zadne dva stavy nerozlisitelne
 

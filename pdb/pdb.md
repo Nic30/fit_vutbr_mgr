@@ -35,8 +35,8 @@ SQL-1999
 
 Objektove rysy
 * strukturovane uzivatelske DT (UDT)
-> * obdoba tridty, polymorfizmus, jednoducha dedicnost...
-> * pomoci CREATE TYPE ...
+    * obdoba tridty, polymorfizmus, jednoducha dedicnost...
+    * pomoci CREATE TYPE ...
 
 * typovana tabulka (tabulka pro UDT), kazdy radek ma REF a jde se na nej odkazovat
 * scope pro reference
@@ -47,3 +47,28 @@ na zkousce co je to obj-rel databaze porovnat, UDT obecne, zadna syntax sql...
 
 
 * fuze slekce a nasledne spojeni stejnych sousedicich
+
+# 17.10.2016
+## zpusoby ulozeni prostorovych dat
+* b-tree (data v listech)
+* k-d-trees (pracuji dobre se statickymi daty)
+* gridfile
+    * two level gridfile (zanorene gridfile)
+    * twin grid file     (jeden pretokovy, oba na stejne urovni, nezavisle
+      rozdelovani, vysoka prostorova efektivita)   
+* excel
+* BANG file
+* Buddy Tree (strom  bounding boxu, vyhoda pro (ne)existencni dotazy)
+* k-d-b tree
+* hB-Tree (deravy vyvazovany strom, neni strom je DAG, paralelni verze)
+* lsd tree (adaptivni kd strom s vyvazovanim, striktne vyvazena cast v pameti, na zbytky ulozen odkaz)
+
+* mrizkove algoritmy pracuji lepe s rovnomerne rozlozenymi daty
+
+# po sem PULSEMESTRALKA
+(pokud alg. pouziva nejaky podalgoritmus, popsat i ten (two level gridfile -> popsat i gridfile))
+
+
+slide 199
+
+
