@@ -172,3 +172,14 @@ pechodova fn. `&Delta;(g,a,z) = {(q1,q1), ...(q2,q3)}`
 * umet dukaz uzavrenosti L_2 vuci ruznym jazykovym operacim
 * bezkontextove jazyky jsou uzavreny jen ke sjednoceni
 
+# 8. prednaska, zacatek9. 1.11.2016
+* pridanim pasek se sila tur. stroje nezvetsi, slovni dukaz zalozeny na tom ze si vice pasek jde simulovat na jedne
+* nedeteministicky t.s. je stejne silny, dukaz zalozeny na tom ze za pomoci zalozni pasky a obnovovanim z ni pri neuspesnem prechodu muzeme simulovat nedeterministicky t.s.
+
+# 22.11.2016
+* modus tolens
+umet zapsat nalezitost jako jazyk
+* postuv korespondencni problem: nerozhodnutelny, dukaz redukci z np problemu
+* problem prazdnosti jazyka dane kontextove gramatiky (ani castecne rozhodnutelny)
+* ricovy vety nebudou na zkousce
+* zkouska primitivne rekurzivni fce. matematicke definice a obory (slide 5)
