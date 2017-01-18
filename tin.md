@@ -183,3 +183,14 @@ umet zapsat nalezitost jako jazyk
 * problem prazdnosti jazyka dane kontextove gramatiky (ani castecne rozhodnutelny)
 * ricovy vety nebudou na zkousce
 * zkouska primitivne rekurzivni fce. matematicke definice a obory (slide 5)
+
+# 12. prednaska 6.12.2016
+* tridy slozitosti definice 12.4 velmi casto na pisemce
+
+dtime je trida ktera je parametrizovna slozitosti t(n)..
+znamena ze trida dtime je trida slozitosti, ktera vymezuje DTS kde, ktre maji danou asymptotyckou casovou slozitost 
+* umet vetu 12.6 (Trida P je uzavrena vuci doplnku)
+
+* tezke a uplne problemy
+* veta 12.9
+* sata 12.7
